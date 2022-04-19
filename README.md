@@ -52,7 +52,7 @@ Maze
 Origins
 
 ```
-Exacative
+Excavation
 Trenches
 Crazyplace
 ```

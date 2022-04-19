@@ -10,6 +10,7 @@
 
 main()
 {
+	level.customMap = GetDvar("customMap");
 	if(GetDvar("customMap") == "vanilla")
 		return;
 	replacefunc(maps/mp/zombies/_zm_perks::get_perk_array, ::get_perk_array);
@@ -20,14 +21,14 @@ init()
 	//level.player_out_of_playable_area_monitor = 0;
 	//level.player_starting_points = 500000;
 	//level.perk_purchase_limit = 10;
-	//if(level.customMap == "vanilla")
-	//	return;
+	if(GetDvar("customMap") == "vanilla")
+		return;
 	thread init_custom_map();
 	if ( isDefined ( level.customMap ) && level.customMap != "vanilla" || getDvar("customMap") == "farm")
 	{
 		setDvar( "scr_screecher_ignore_player", 1 );
 	}
-	level.get_player_perk_purchase_limit = ::get_player_perk_purchase_limit;
+	// level.get_player_perk_purchase_limit = ::get_player_perk_purchase_limit;
 	//level.callbackactordamage = ::actor_damage_override_wrapper;
 }
 
@@ -138,7 +139,7 @@ init_custom_map()
 {
 	level thread onplayerconnected();
 	flag_wait( "initial_blackscreen_passed" );
-	thread init_buildables();
+	// thread init_buildables();
 	if(level.script == "zm_highrise" && is_true(level.customMap != "vanilla") || level.script == "zm_buried" && is_true(level.customMap != "vanilla"))
 		thread power_setup();
 	wait 5;
@@ -159,9 +160,9 @@ onplayerconnected()
 	for ( ;; )
 	{
 		level waittill( "connected", player );
-		player thread addPerkSlot();
+		// player thread addPerkSlot();
 		player thread onplayerspawned();
-		player thread perkHud();
+		// player thread perkHud();
 		//player thread meleeCoords();
 	}
 }

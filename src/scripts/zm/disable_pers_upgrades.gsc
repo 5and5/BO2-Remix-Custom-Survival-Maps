@@ -5,6 +5,8 @@
 
 main()
 {
+	if(GetDvar("customMap") == "vanilla")
+		return;
 	replacefunc(maps/mp/zombies/_zm_pers_upgrades::pers_upgrade_init, ::pers_upgrade_init);
 	replacefunc(maps/mp/zombies/_zm_pers_upgrades::is_pers_system_active, ::is_pers_system_active);
 }
