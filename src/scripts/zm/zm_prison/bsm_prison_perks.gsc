@@ -18,19 +18,19 @@ main()
 {
 	if(GetDvar("customMap") == "vanilla")
 		return;
-	replacefunc(maps/mp/zombies/_zm_perks::perks_register_clientfield, ::perks_register_clientfield); 
-	replacefunc(maps/mp/zombies/_zm_perks::set_perk_clientfield, ::set_perk_clientfield);
 	replacefunc(maps/mp/zombies/_zm_perks::perk_machine_spawn_init, ::perk_machine_spawn_init);
-	replacefunc(maps/mp/zombies/_zm_perks::init, ::perks_init);
-	if(GetDvar("customMap") != "rooftop")
-	{
-		level.zombiemode_using_marathon_perk = 1;
-		level.zombiemode_using_revive_perk = 1;
-	}
-	level.zombiemode_using_additionalprimaryweapon_perk = 1;
-	level.zombiemode_using_divetonuke_perk = 1;
-	replacefunc(maps/mp/zombies/_zm_perk_divetonuke::enable_divetonuke_perk_for_level, scripts/zm/zm_prison/bsm_prison_perk_phd::enable_divetonuke_perk_for_level);
-	maps/mp/zombies/_zm_perk_divetonuke::enable_divetonuke_perk_for_level();
+	// replacefunc(maps/mp/zombies/_zm_perks::perks_register_clientfield, ::perks_register_clientfield); 
+	// replacefunc(maps/mp/zombies/_zm_perks::set_perk_clientfield, ::set_perk_clientfield);
+	// replacefunc(maps/mp/zombies/_zm_perks::init, ::perks_init);
+	// if(GetDvar("customMap") != "rooftop")
+	// {
+	// 	level.zombiemode_using_marathon_perk = 1;
+	// 	level.zombiemode_using_revive_perk = 1;
+	// }
+	// level.zombiemode_using_additionalprimaryweapon_perk = 1;
+	// level.zombiemode_using_divetonuke_perk = 1;
+	// replacefunc(maps/mp/zombies/_zm_perk_divetonuke::enable_divetonuke_perk_for_level, scripts/zm/zm_prison/bsm_prison_perk_phd::enable_divetonuke_perk_for_level);
+	// maps/mp/zombies/_zm_perk_divetonuke::enable_divetonuke_perk_for_level();
 }
 
 perks_init() //checked partially changed to match cerberus output
@@ -432,7 +432,7 @@ perks_register_clientfield() //modified function
 
 extra_perk_spawns() //custom function
 {
-	level.docksPerkArray = array( "specialty_deadshot", "specialty_rof", "specialty_fastreload", "specialty_grenadepulldeath", "specialty_weapupgrade", "specialty_longersprint", "specialty_additionalprimaryweapon", "specialty_flakjacket", "specialty_quickrevive" );
+	level.docksPerkArray = array( "specialty_deadshot", "specialty_rof", "specialty_fastreload", "specialty_weapupgrade", "specialty_flakjacket", "specialty_quickrevive" );
 	
 	level.docksPerks[ "specialty_deadshot" ] = spawnstruct();
 	level.docksPerks[ "specialty_deadshot" ].origin = ( -1566, 5542.5, -64 );
@@ -454,16 +454,16 @@ extra_perk_spawns() //custom function
 	level.docksPerks[ "specialty_grenadepulldeath" ].angles = ( 0, 315, 0 );
 	level.docksPerks[ "specialty_grenadepulldeath" ].model = "p6_zm_vending_electric_cherry_off";
 	level.docksPerks[ "specialty_grenadepulldeath" ].script_noteworthy = "specialty_grenadepulldeath";
-	level.docksPerks[ "specialty_longersprint" ] = spawnstruct();
-	level.docksPerks[ "specialty_longersprint" ].origin = ( -652.5, 5326, -72 );
-	level.docksPerks[ "specialty_longersprint" ].angles = ( 0, 145, 0 );
-	level.docksPerks[ "specialty_longersprint" ].model = "p6_zm_al_vending_nuke_on";
-	level.docksPerks[ "specialty_longersprint" ].script_noteworthy = "specialty_longersprint";
-	level.docksPerks[ "specialty_additionalprimaryweapon" ] = spawnstruct();
-	level.docksPerks[ "specialty_additionalprimaryweapon" ].origin = ( 386, 8297, 64 );
-	level.docksPerks[ "specialty_additionalprimaryweapon" ].angles = ( 0, 0, 0 );
-	level.docksPerks[ "specialty_additionalprimaryweapon" ].model = "p6_zm_al_vending_nuke_on";
-	level.docksPerks[ "specialty_additionalprimaryweapon" ].script_noteworthy = "specialty_additionalprimaryweapon";
+	// level.docksPerks[ "specialty_longersprint" ] = spawnstruct();
+	// level.docksPerks[ "specialty_longersprint" ].origin = ( -652.5, 5326, -72 );
+	// level.docksPerks[ "specialty_longersprint" ].angles = ( 0, 145, 0 );
+	// level.docksPerks[ "specialty_longersprint" ].model = "p6_zm_al_vending_nuke_on";
+	// level.docksPerks[ "specialty_longersprint" ].script_noteworthy = "specialty_longersprint";
+	// level.docksPerks[ "specialty_additionalprimaryweapon" ] = spawnstruct();
+	// level.docksPerks[ "specialty_additionalprimaryweapon" ].origin = ( 386, 8297, 64 );
+	// level.docksPerks[ "specialty_additionalprimaryweapon" ].angles = ( 0, 0, 0 );
+	// level.docksPerks[ "specialty_additionalprimaryweapon" ].model = "p6_zm_al_vending_nuke_on";
+	// level.docksPerks[ "specialty_additionalprimaryweapon" ].script_noteworthy = "specialty_additionalprimaryweapon";
 	level.docksPerks[ "specialty_quickrevive" ] = spawnstruct();
 	level.docksPerks[ "specialty_quickrevive" ].origin = ( 208.5, 6373.25, 64 );
 	level.docksPerks[ "specialty_quickrevive" ].angles = ( 0, 235, 0 );
@@ -480,7 +480,7 @@ extra_perk_spawns() //custom function
 	level.docksPerks[ "specialty_weapupgrade" ].model = "p6_zm_al_vending_pap_on";
 	level.docksPerks[ "specialty_weapupgrade" ].script_noteworthy = "specialty_weapupgrade";
 	
-	level.cellblockPerkArray = array( "specialty_armorvest", "specialty_deadshot", "specialty_rof", "specialty_weapupgrade", "specialty_longersprint", "specialty_additionalprimaryweapon", "specialty_flakjacket", "specialty_quickrevive" );
+	level.cellblockPerkArray = array( "specialty_armorvest", "specialty_deadshot", "specialty_rof", "specialty_weapupgrade" );
 	
 	level.cellblockPerks[ "specialty_deadshot" ] = spawnstruct();
 	level.cellblockPerks[ "specialty_deadshot" ].origin = ( 2827, 9263, 1335 );
@@ -497,26 +497,26 @@ extra_perk_spawns() //custom function
 	level.cellblockPerks[ "specialty_rof" ].angles = ( 0, 180, 0 );
 	level.cellblockPerks[ "specialty_rof" ].model = "zombie_vending_doubletap2";
 	level.cellblockPerks[ "specialty_rof" ].script_noteworthy = "specialty_rof";
-	level.cellblockPerks[ "specialty_longersprint" ] = spawnstruct();
-	level.cellblockPerks[ "specialty_longersprint" ].origin = ( -416.35, 9123.5, 1336 );
-	level.cellblockPerks[ "specialty_longersprint" ].angles = ( 0, 90, 0 );
-	level.cellblockPerks[ "specialty_longersprint" ].model = "p6_zm_al_vending_nuke_on";
-	level.cellblockPerks[ "specialty_longersprint" ].script_noteworthy = "specialty_longersprint";
-	level.cellblockPerks[ "specialty_additionalprimaryweapon" ] = spawnstruct();
-	level.cellblockPerks[ "specialty_additionalprimaryweapon" ].origin = ( 1627.6, 9117.5, 1336 );
-	level.cellblockPerks[ "specialty_additionalprimaryweapon" ].angles = ( 0, 90, 0 );
-	level.cellblockPerks[ "specialty_additionalprimaryweapon" ].model = "p6_zm_al_vending_nuke_on";
-	level.cellblockPerks[ "specialty_additionalprimaryweapon" ].script_noteworthy = "specialty_additionalprimaryweapon";
-	level.cellblockPerks[ "specialty_quickrevive" ] = spawnstruct();
-	level.cellblockPerks[ "specialty_quickrevive" ].origin = ( 1777.1, 10675.5, 1335 );
-	level.cellblockPerks[ "specialty_quickrevive" ].angles = ( 0, -43, 0 );
-	level.cellblockPerks[ "specialty_quickrevive" ].model = "p6_zm_al_vending_nuke_on";
-	level.cellblockPerks[ "specialty_quickrevive" ].script_noteworthy = "specialty_quickrevive";
-	level.cellblockPerks[ "specialty_flakjacket" ] = spawnstruct();
-	level.cellblockPerks[ "specialty_flakjacket" ].origin = ( 1584, 9162, 1335 );
-	level.cellblockPerks[ "specialty_flakjacket" ].angles = ( 0, 270, 0 );
-	level.cellblockPerks[ "specialty_flakjacket" ].model = "p6_zm_al_vending_nuke_on";
-	level.cellblockPerks[ "specialty_flakjacket" ].script_noteworthy = "specialty_flakjacket";
+	// level.cellblockPerks[ "specialty_longersprint" ] = spawnstruct();
+	// level.cellblockPerks[ "specialty_longersprint" ].origin = ( -416.35, 9123.5, 1336 );
+	// level.cellblockPerks[ "specialty_longersprint" ].angles = ( 0, 90, 0 );
+	// level.cellblockPerks[ "specialty_longersprint" ].model = "p6_zm_al_vending_nuke_on";
+	// level.cellblockPerks[ "specialty_longersprint" ].script_noteworthy = "specialty_longersprint";
+	// level.cellblockPerks[ "specialty_additionalprimaryweapon" ] = spawnstruct();
+	// level.cellblockPerks[ "specialty_additionalprimaryweapon" ].origin = ( 1627.6, 9117.5, 1336 );
+	// level.cellblockPerks[ "specialty_additionalprimaryweapon" ].angles = ( 0, 90, 0 );
+	// level.cellblockPerks[ "specialty_additionalprimaryweapon" ].model = "p6_zm_al_vending_nuke_on";
+	// level.cellblockPerks[ "specialty_additionalprimaryweapon" ].script_noteworthy = "specialty_additionalprimaryweapon";
+	// level.cellblockPerks[ "specialty_quickrevive" ] = spawnstruct();
+	// level.cellblockPerks[ "specialty_quickrevive" ].origin = ( 1777.1, 10675.5, 1335 );
+	// level.cellblockPerks[ "specialty_quickrevive" ].angles = ( 0, -43, 0 );
+	// level.cellblockPerks[ "specialty_quickrevive" ].model = "p6_zm_al_vending_nuke_on";
+	// level.cellblockPerks[ "specialty_quickrevive" ].script_noteworthy = "specialty_quickrevive";
+	// level.cellblockPerks[ "specialty_flakjacket" ] = spawnstruct();
+	// level.cellblockPerks[ "specialty_flakjacket" ].origin = ( 1584, 9162, 1335 );
+	// level.cellblockPerks[ "specialty_flakjacket" ].angles = ( 0, 270, 0 );
+	// level.cellblockPerks[ "specialty_flakjacket" ].model = "p6_zm_al_vending_nuke_on";
+	// level.cellblockPerks[ "specialty_flakjacket" ].script_noteworthy = "specialty_flakjacket";
 	level.cellblockPerks[ "specialty_weapupgrade" ] = spawnstruct();
 	level.cellblockPerks[ "specialty_weapupgrade" ].origin = ( 891, 8349, 1544 );
 	level.cellblockPerks[ "specialty_weapupgrade" ].angles = ( 0, 180, 0 );
@@ -584,21 +584,21 @@ perk_machine_spawn_init() //modified function
 		}
 		i++;
 	}
-	if ( isDefined( level.customMap ) && level.customMap == "docks" && isdefined(level.disableBSMMagic) && !level.disableBSMMagic )
+	if ( isDefined( level.customMap ) && level.customMap == "docks" )
 	{
 		foreach ( perk in level.docksPerkArray )
 		{
 			pos[ pos.size ] = level.docksPerks[ perk ];
 		}
 	}
-	else if ( isDefined( level.customMap ) && level.customMap == "cellblock" && isdefined(level.disableBSMMagic) && !level.disableBSMMagic )
+	else if ( isDefined( level.customMap ) && level.customMap == "cellblock" )
 	{
 		foreach ( perk in level.cellblockPerkArray )
 		{
 			pos[ pos.size ] = level.cellblockPerks[ perk ];
 		}
 	}
-	else if ( isDefined( level.customMap ) && level.customMap == "showers" && isdefined(level.disableBSMMagic) && !level.disableBSMMagic )
+	else if ( isDefined( level.customMap ) && level.customMap == "showers" )
 	{
 		foreach ( perk in level.showersPerkArray )
 		{

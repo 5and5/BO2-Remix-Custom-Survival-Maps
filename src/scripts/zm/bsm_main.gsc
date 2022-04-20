@@ -33,6 +33,39 @@ init()
 	//level.callbackactordamage = ::actor_damage_override_wrapper;
 }
 
+onplayerconnected()
+{
+	level endon("end_game");
+	for ( ;; )
+	{
+		level waittill( "connected", player );
+		// player thread addPerkSlot();
+		// player.score = 5555555;
+		player thread onplayerspawned();
+		// player thread perkHud();
+		//player thread meleeCoords();
+	}
+}
+
+onplayerspawned()
+{
+	self endon("disconnect");
+	level endon("end_game");
+	isFirstSpawn = true;
+	for ( ;; )
+	{
+		self waittill( "spawned_player" );
+		//bot = AddTestClient();
+		if(isFirstSpawn)
+		{
+			self initOverFlowFix();
+
+			isFirstSpawn = false;
+		}
+		level notify ( "check_count" );
+	}
+}
+
 pers_upgrade_init() //checked matches cerberus output
 {
 }
@@ -40,57 +73,6 @@ pers_upgrade_init() //checked matches cerberus output
 is_pers_system_active()
 {
 	return 0;
-}
-
-meleeCoords()
-{
-	level endon("end_game");
-	self endon("disconnnect");
-	for(;;)
-	{
-		if(self meleeButtonPressed())
-		{
-			
-			self IPrintLn("hello there");
-			me = self.origin;
-			you = self GetPlayerAngles();
-			self IPrintLn("Origin = "+ me);
-			angles = (0, (self GetPlayerAngles())[1] + 90, 0);
-			logprint(self.origin + ", " + angles + "\n");
-			wait 1;
-			self IPrintLn("Angles = "+ you);
-
-
-			/*IPrintLn("Changing Weapon Tier");
-			weapon = maps/mp/zombies/_zm_weapons::get_base_name(self GetCurrentWeapon());
-			if(!isdefined(self.weaponTiers))
-			{
-				self.weaponTiers = [];
-			}
-			if(!isdefined(self.weaponTiers[weapon]))
-			{
-				self.weaponTiers[weapon] = 0;
-			}
-			else
-			{
-				if(self.weaponTiers[weapon] == 4)
-				{
-					self.weaponTiers[weapon] = 0;
-				}
-				else
-				{
-					self.weaponTiers[weapon]++;
-				}
-			}*/
-			/*
-			for(i=0;i<level.chests.size;i++)
-			{
-				self IPrintLn(level.chests[i].script_noteworthy);
-				wait 0.5;
-			}*/
-		}
-		wait .5;
-	}
 }
 
 get_perk_array( ignore_chugabud ) //checked matches cerberus output
@@ -164,19 +146,6 @@ power_setup()
 	level setclientfield( "zombie_power_on", 1 );
 }
 
-onplayerconnected()
-{
-	level endon("end_game");
-	for ( ;; )
-	{
-		level waittill( "connected", player );
-		// player thread addPerkSlot();
-		player thread onplayerspawned();
-		// player thread perkHud();
-		//player thread meleeCoords();
-	}
-}
-
 perkHud()
 {
 	if(level.script != "zm_prison" && level.script != "zm_highrise")
@@ -228,25 +197,6 @@ addPerkSlot()
 		if((perks.size - level.perk_purchase_limit) <= completedCount)
 			break;
 		wait .1;
-	}
-}
-
-onplayerspawned()
-{
-	self endon("disconnect");
-	level endon("end_game");
-	isFirstSpawn = true;
-	for ( ;; )
-	{
-		self waittill( "spawned_player" );
-		//bot = AddTestClient();
-		if(isFirstSpawn)
-		{
-			self initOverFlowFix();
-
-			isFirstSpawn = false;
-		}
-		level notify ( "check_count" );
 	}
 }
 
