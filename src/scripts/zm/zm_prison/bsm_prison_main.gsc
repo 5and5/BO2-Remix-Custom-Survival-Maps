@@ -26,7 +26,8 @@
 
 main()
 {
-	if(GetDvar("customMap") == "vanilla") return;
+	if(GetDvar("customMap") == "vanilla")
+		return;
 	replacefunc(maps/mp/zm_alcatraz_classic::give_afterlife, ::give_afterlife);
 	replacefunc(maps/mp/zombies/_zm_ai_brutus::init, ::init_brutus);
 	replacefunc(maps/mp/zombies/_zm_blockers::door_think, ::door_think);

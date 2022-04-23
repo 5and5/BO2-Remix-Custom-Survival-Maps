@@ -19,6 +19,8 @@
 
 main()
 {
+	if(GetDvar("customMap") == "vanilla")
+		return;
 	replacefunc(maps/mp/zombies/_zm_weapons::init_spawnable_weapon_upgrade, ::init_spawnable_weapon_upgrade);
 	replacefunc(maps/mp/zombies/_zm_weapons::init_weapons, ::init_weapons);
 	precacheEffectsForWeapons();

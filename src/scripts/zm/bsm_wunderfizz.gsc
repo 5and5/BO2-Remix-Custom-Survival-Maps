@@ -5,6 +5,8 @@
 
 init()
 {
+	if(GetDvar("customMap") == "vanilla")
+		return;
 	thread setupWunderfizz();
 }
 

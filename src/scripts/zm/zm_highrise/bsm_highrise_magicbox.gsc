@@ -14,6 +14,8 @@
 
 main()
 {
+	if(GetDvar("customMap") == "vanilla")
+		return;
 	replacefunc(maps/mp/zombies/_zm_magicbox::init, ::init_magicbox);
 	replacefunc(maps/mp/zombies/_zm_magicbox::get_chest_pieces, ::get_chest_pieces);
 }

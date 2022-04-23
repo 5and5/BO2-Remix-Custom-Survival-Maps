@@ -5,12 +5,12 @@
 
 main()
 {
-	if(getDvar("customMap") != "vanilla")
-	{
-		level.zombiemode_using_divetonuke_perk = 1;
-		maps/mp/zombies/_zm_perks::register_perk_basic_info( "specialty_flakjacket", "divetonuke", 2000, &"ZOMBIE_PERK_DIVETONUKE", "zombie_perk_bottle_jugg" );
-		maps/mp/zombies/_zm_perks::register_perk_machine( "specialty_flakjacket", ::divetonuke_perk_machine_setup, ::divetonuke_perk_machine_think );
-	}	
+	if(GetDvar("customMap") == "vanilla")
+		return;
+	level.zombiemode_using_divetonuke_perk = 1;
+	maps/mp/zombies/_zm_perks::register_perk_basic_info( "specialty_flakjacket", "divetonuke", 2000, &"ZOMBIE_PERK_DIVETONUKE", "zombie_perk_bottle_jugg" );
+	maps/mp/zombies/_zm_perks::register_perk_machine( "specialty_flakjacket", ::divetonuke_perk_machine_setup, ::divetonuke_perk_machine_think );
+
 }
 
 init_divetonuke() //checked matches cerberus output

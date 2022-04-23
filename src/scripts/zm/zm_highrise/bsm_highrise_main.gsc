@@ -45,11 +45,15 @@
 
 main()
 {
+	if(GetDvar("customMap") == "vanilla")
+		return;
 	replacefunc(maps/mp/zm_highrise::setup_leapers, ::setup_leapers_custom);
 }
 
 init()
 {
+	if(GetDvar("customMap") == "vanilla")
+		return;
 	custom_vending_precaching();
 	level thread elevators();
 }
