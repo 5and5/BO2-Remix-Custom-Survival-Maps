@@ -5,6 +5,8 @@
 
 main()
 {
+	if(GetDvar("customMap") == "vanilla")
+		return;
 	replacefunc(maps/mp/zombies/_zm_powerups::powerup_drop, ::powerup_drop);
 }
 

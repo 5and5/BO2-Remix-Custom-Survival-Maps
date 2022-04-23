@@ -18,7 +18,7 @@ main()
 
 init()
 {
-	if(level.customMap == "vanilla")
+	if(GetDvar("customMap") == "vanilla")
 		return;
 	level thread override_zombie_count();
 	flag_wait( "initial_blackscreen_passed" );
