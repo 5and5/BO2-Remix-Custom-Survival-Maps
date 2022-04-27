@@ -13,6 +13,7 @@ main()
 	if(GetDvar("customMap") == "")
 		SetDvar("customMap", "vanilla");
 	level.customMap = GetDvar("customMap");
+	level.disableBSMMagic = 0;
 	if(level.customMap == "vanilla")
 		return;
 	// replacefunc(maps/mp/zombies/_zm_perks::get_perk_array, ::get_perk_array);
@@ -40,7 +41,7 @@ onplayerconnected()
 	{
 		level waittill( "connected", player );
 		// player thread addPerkSlot();
-		// player.score = 5555555;
+		// player.score = 555555;
 		player thread onplayerspawned();
 		// player thread perkHud();
 		//player thread meleeCoords();

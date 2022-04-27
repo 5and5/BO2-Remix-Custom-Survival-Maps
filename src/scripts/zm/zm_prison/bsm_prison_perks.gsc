@@ -432,7 +432,7 @@ perks_register_clientfield() //modified function
 
 extra_perk_spawns() //custom function
 {
-	level.docksPerkArray = array( "specialty_deadshot", "specialty_rof", "specialty_fastreload", "specialty_weapupgrade", "specialty_flakjacket", "specialty_quickrevive" );
+	level.docksPerkArray = array( "specialty_deadshot", "specialty_rof", "specialty_fastreload", "specialty_weapupgrade", "specialty_quickrevive" );
 	
 	level.docksPerks[ "specialty_deadshot" ] = spawnstruct();
 	level.docksPerks[ "specialty_deadshot" ].origin = ( -1566, 5542.5, -64 );
@@ -469,11 +469,11 @@ extra_perk_spawns() //custom function
 	level.docksPerks[ "specialty_quickrevive" ].angles = ( 0, 235, 0 );
 	level.docksPerks[ "specialty_quickrevive" ].model = "p6_zm_al_vending_nuke_on";
 	level.docksPerks[ "specialty_quickrevive" ].script_noteworthy = "specialty_quickrevive";
-	level.docksPerks[ "specialty_flakjacket" ] = spawnstruct();
-	level.docksPerks[ "specialty_flakjacket" ].origin = ( -643, 7057, 64 );
-	level.docksPerks[ "specialty_flakjacket" ].angles = ( 0, 57, 0 );
-	level.docksPerks[ "specialty_flakjacket" ].model = "p6_zm_al_vending_nuke_on";
-	level.docksPerks[ "specialty_flakjacket" ].script_noteworthy = "specialty_flakjacket";
+	// level.docksPerks[ "specialty_flakjacket" ] = spawnstruct();
+	// level.docksPerks[ "specialty_flakjacket" ].origin = ( -643, 7057, 64 );
+	// level.docksPerks[ "specialty_flakjacket" ].angles = ( 0, 57, 0 );
+	// level.docksPerks[ "specialty_flakjacket" ].model = "p6_zm_al_vending_nuke_on";
+	// level.docksPerks[ "specialty_flakjacket" ].script_noteworthy = "specialty_flakjacket";
 	level.docksPerks[ "specialty_weapupgrade" ] = spawnstruct();
 	level.docksPerks[ "specialty_weapupgrade" ].origin = ( -1769, 5391, -72 );
 	level.docksPerks[ "specialty_weapupgrade" ].angles = ( 0, 100, 0 );

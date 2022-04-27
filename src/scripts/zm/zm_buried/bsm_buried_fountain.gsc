@@ -8,6 +8,8 @@ main()
 {
 	if(getDvar("customMap") == "vanilla")
 		return;
+	
+	level.customMap = GetDvar("customMap");
 	replacefunc(maps/mp/zm_buried_fountain::maze_fountain_think, ::maze_fountain_think);
 	replacefunc(maps/mp/zm_buried_fountain::transport_player_to_start_zone, ::transport_player_to_start_zone);
 }

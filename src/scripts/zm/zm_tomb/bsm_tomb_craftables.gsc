@@ -17,6 +17,7 @@ main()
 {
 	if(GetDvar("customMap") == "vanilla")
 		return;
+	level.customMap = GetDvar("customMap");
 	replacefunc(maps/mp/zm_tomb_craftables::init_craftables, ::init_craftables);
 }
 

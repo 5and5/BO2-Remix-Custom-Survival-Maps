@@ -18,6 +18,7 @@ main()
 {
 	if(GetDvar("customMap") == "vanilla")
 		return;
+	level.disableBSMMagic = 0;
 	replacefunc(maps/mp/zombies/_zm_perks::perk_machine_spawn_init, ::perk_machine_spawn_init);
 	replacefunc(maps/mp/zombies/_zm_perks::wait_for_player_to_take, ::wait_for_player_to_take);
 }
@@ -260,6 +261,7 @@ perk_machine_spawn_init() //modified function
 					}
 					else if( is_true(level.customMap == "crazyplace") )
 					{
+
 						if(structs[i].script_noteworthy == "specialty_armorvest" || structs[i].script_noteworthy == "specialty_longersprint" || structs[i].script_noteworthy == "specialty_rof" || structs[i].script_noteworthy == "specialty_quickrevive" || structs[i].script_noteworthy == "specialty_fastreload" )
 							structs[i] Delete();
 						else
@@ -309,6 +311,7 @@ perk_machine_spawn_init() //modified function
 	}
 	else if ( isDefined( level.customMap ) && level.customMap == "crazyplace" && isdefined(level.disableBSMMagic) && !level.disableBSMMagic )
 	{
+								print("crazy");
 		foreach ( perk in level.crazyplacePerkArray )
 		{
 			pos[ pos.size ] = level.crazyplacePerks[ perk ];
